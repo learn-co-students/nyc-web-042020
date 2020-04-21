@@ -144,7 +144,7 @@ def all_players
   end.flatten
   # => [ [], [] ].flatten
   
-  # [ [home array], [ away arra] ].flatten => [ {home player}, {h player}, {}, {}, {away players} ]
+  # [ [home array], [ away arra] ].flatten => [ {home player}, {h player}, {}, {}, {away player} ]
 end
 
 def find_player(name)
