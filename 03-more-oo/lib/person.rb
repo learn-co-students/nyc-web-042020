@@ -1,12 +1,15 @@
 require 'pry'
 class Person
     attr_reader :name, :happiness, :hygiene
-    attr_accessor :bank_account, :drake
+    attr_accessor :bank_account
+    @@all = []
     def initialize(name = nil)
         @name = name
         @bank_account = 25
         @happiness = 8
         @hygiene = 8
+        Person.all << self
+        
     end
 
     def happiness=(num)
@@ -19,7 +22,15 @@ class Person
         end
     end
 
+    def self.all 
+        @@all
+    end
 
+    def self.all_name
+        self.all.uniq.each do |person_inst|
+            puts person_inst.name
+        end
+    end
 
     def hygiene 
         @hygiene
@@ -71,8 +82,6 @@ class Person
 end
 
 
-person = Person.new("Tashawn")
-
 # person.take_bath
 
 binding.pry
@@ -85,17 +94,6 @@ binding.pry
 
 # # didn't initialize bank_account
 #     # 
-
-
-
-
-
-
-
-
-
-
-
 
 
 
