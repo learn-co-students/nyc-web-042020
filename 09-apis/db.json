@@ -1,0 +1,16 @@
+{
+    "foods": [
+        {
+            "name": "spinach"
+        },
+        {
+            "name": "steak"
+        },
+        {
+            "name": "spaghetti"
+        },
+        {
+            "name": "pizza"
+        }
+    ]
+}
