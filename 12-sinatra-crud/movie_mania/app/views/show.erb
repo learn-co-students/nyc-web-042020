@@ -1,0 +1,9 @@
+<h1>Movie</h1>
+
+<h3>Title: <%= @movie.title %></h3>
+<h3>Genre: <%= @movie.genre %></h3>
+<h3>Year: <%= @movie.year %></h3>
+
+<marquee scrollamount="15" direction="right">
+  <img src="<%= @movie.img_url %>" alt="<%= @movie.title %>">
+</marquee>
