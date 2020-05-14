@@ -1,0 +1,12 @@
+<h1>Edit Movie</h1>
+
+<form action="/movies/<%= @movie.id %>" method="POST">
+  
+  <input type="hidden" name="_method" value="PATCH">
+
+  <input type="text" name="movie[title]" value="<%= @movie.title %>">
+  <input type="number" name="movie[year]" value="<%= @movie.year %>">
+  <input type="text" name="movie[genre]" value="<%= @movie.genre %>">
+  <input type="text" name="movie[img_url]" value="<%= @movie.img_url %>">
+  <input type="submit" value="Update Movie"> 
+</form>

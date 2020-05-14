@@ -1,0 +1,21 @@
+<h1>Movie</h1>
+
+<h3>Title: <%= @movie.title %></h3>
+<h3>Genre: <%= @movie.genre %></h3>
+<h3>Year: <%= @movie.year %></h3>
+
+<marquee scrollamount="15" direction="right">
+  <img src="<%= @movie.img_url %>" alt="<%= @movie.title %>">
+</marquee>
+
+<h1>Reviews</h1>
+
+<% @movie.reviews.each do |review| %>
+  <p><%= review.content %> | <%= review.rating %> </p>
+<% end  %>
+
+
+<form action="/movies/<%= @movie.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="DELETE MOVIE">
+</form>
