@@ -2,6 +2,8 @@ class UserDrinksController < ApplicationController
 
   def new
      @user_drink = UserDrink.new
+     @drinks = Drink.all
+     @users = User.all
   end 
 
   def create 
