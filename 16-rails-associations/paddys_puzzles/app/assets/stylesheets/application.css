@@ -15,8 +15,9 @@
  */
 
 .index_img {
-  max-width: 150px;
-  max-height: 150px;
+  /* max-width: 150px; */
+  max-width: 80%;
+  max-height: 200px;
 }
 
  .index_container {

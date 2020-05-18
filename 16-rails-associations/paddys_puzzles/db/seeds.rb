@@ -6,8 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# puts "...Destroying All Drinks"
-# Drink.destroy_all
+puts "...Destroying All UserDrinks"
+UserDrink.destroy_all
+puts "...Destroying All Drinks"
+Drink.destroy_all
+puts "...Destroying All Users"
+User.destroy_all
 
 # categories = ["wine"]
 

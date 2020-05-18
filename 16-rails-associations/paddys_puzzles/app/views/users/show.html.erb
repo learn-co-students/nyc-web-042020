@@ -1,0 +1,14 @@
+<h1>Drink</h1>
+
+<div class='show-container'>
+  <p>Name: <%= @user.name %></p>
+  <marquee direction="right" scrollamount="20">
+    <img class="show-img" src="<%= @user.img_url %>" alt="<%= @user.name%>">
+  </marquee>
+
+  <h2>My Drinks</h2>
+
+  <% @user.drinks.uniq.each do |drink| %>
+    <p><%= drink.name %> | <%= drink.rating_average %></p>
+  <% end %>
+</div>

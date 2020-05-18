@@ -7,4 +7,15 @@
   <marquee direction="right" scrollamount="20">
     <img class="show-img" src="<%= @drink.img_url %>" alt="<%= @drink.name%>">
   </marquee>
+
+
+
+
+  <h2>Reviews</h2>
+  <h5>Average Rating for <%= @drink.name %> | <%= @drink.rating_average %> </h5>
+  <%# all review content  %>
+    <%# - who wrote this review %>
+  <% @drink.user_drinks.each do |user_drink| %>
+    <p> <%= user_drink.content %> --- <%= user_drink.user.name %></p>
+  <% end %>
 </div>

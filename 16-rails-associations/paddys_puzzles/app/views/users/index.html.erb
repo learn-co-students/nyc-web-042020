@@ -3,7 +3,7 @@
 <div class="index_container">
   <% @users.each do |user| %>
     <div class="index_tile">
-      <h3><%= user.name %></h3>
+      <h3><%= link_to user.name, user %></h3>
       <img class="index_img" src="<%= user.img_url %>" alt="<%= user.name%>">
     </div>
   <% end %>
