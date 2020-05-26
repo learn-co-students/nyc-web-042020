@@ -1,0 +1,34 @@
+<h1>Drink</h1>
+<% if session[:page_counter].to_i > 3 %>
+
+  <div>
+    <iframe width="764" height="573" src="https://www.youtube.com/embed/tHQufUqtWcc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <%= button_to "I Super Promise that I have watched this Ad", reset_path, method: :delete %>
+  </div>
+
+<% else %>
+  <% if flash[:success] %>
+    <h2><%= flash[:success] %></h2>
+  <% end %>
+
+  <h1>You Have <%= 3 - session[:page_counter].to_i %> Views left </h1>
+
+  <div class='show-container'>
+    <p>Name: <%= @drink.name %></p>
+    <p>Category: <%= @drink.category %></p>
+    <p>Ounces: <%= @drink.ounces %></p>
+    <marquee direction="right" scrollamount="20">
+      <img class="show-img" src="<%= @drink.img_url %>" alt="<%= @drink.name%>">
+    </marquee>
+
+
+    <h2>Reviews</h2>
+    <h5>Average Rating for <%= @drink.name %> | <%= @drink.rating_average %> </h5>
+    <%# all review content  %>
+      <%# - who wrote this review %>
+    <% @drink.user_drinks.each do |user_drink| %>
+      <p> <%= user_drink.content %> --- <%= user_drink.user.name %></p>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<h1>Create</h1>
+
+<%= form_for @user_drink do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <%= f.label :rating %>
+  <%= f.number_field :rating %>
+
+  <%= f.label :user_id %>
+  <%= f.collection_select :user_id, @users, :id, :name %>
+
+  <%= f.label :drink_id %>
+  <%= f.collection_select :drink_id, @drinks, :id, :name  %>
+
+  <%= f.submit %>
+<% end %>
+
