@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PaddysPuzzles</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class='nav'>
+      <img class='logo' src="https://img.favpng.com/18/10/6/beer-irish-pub-bar-t-shirt-png-favpng-B1d28xyNdMZKeGpG1wY32B5nk.jpg" alt="barlogo">
+    </div>
+
+      <ul>
+        <li><%= link_to 'User Home', users_path %></li>
+        <li><%= link_to 'Drink Home', drinks_path %></li>
+        <li><%= link_to 'New Drink', new_drink_path %></li>
+        <% if @logged_in_user %>
+          <li class='right'>Welcome <%= @logged_in_user.name %></li>
+          <li class='right'><%= link_to 'Log-out', logout_path, method: :delete %></li>
+        <% else %>
+          <li class='right'><%= link_to 'Sign-up', new_user_path %></li>
+          <li class='right'><%= link_to 'Log-in', new_login_path %></li>
+        <% end %>
+      </ul>
+
+
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+ body {
+   max-width: 90%;
+   margin: auto;
+ }
+
+.index_img {
+  /* max-width: 150px; */
+  max-width: 80%;
+  max-height: 200px;
+}
+
+ .index_container {
+   max-width: 90%;
+   margin: auto;
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: space-around;
+ }
+
+ .index_tile {
+   width: 20%;
+   margin: 5px;
+   padding: 15px;
+   background: lightgray;
+   border-radius: 25px;
+   text-align: center;
+ }
+
+.show-container {
+  width: 90%;
+  border-radius: 25px;
+  padding: 25px;
+  margin: auto;
+  background-color: lightgrey;
+}
+
+.show-img {
+  max-width: 25%;
+  max-height: 200px;
+  padding: 15px;
+  border-radius: 25px;
+}
+
+
+
+ul li {
+  display: inline-block;
+  padding: 20px;
+  color: black;
+}
+
+li:hover {
+  background-color: rgb(177, 254, 255);
+  transition-duration: 1s;
+}
+
+
+/* Navigation and header */
+.nav {
+  background: #fff;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 0px auto;
+  margin-bottom: 10px;
+  max-width: 90%;
+  padding: 2.25%; 
+  width: 85%;
+  
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 20px;
+}
+
+.logo {
+  max-width: 100%;
+  max-height: 200px;
+}
+
+ul {
+  background-color: rgba(0, 131, 0, 0.6);
+  margin: 0px auto;
+  margin-bottom: 10px;
+  max-width: 90%;
+  /* padding: 1.25%;  */
+  width: 85%;
+  
+  /* font-family: molle; */
+  /* text-align: center; */
+  vertical-align: middle;
+  border-radius: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: black
+}
+
+.right {
+  float: right;
+}
