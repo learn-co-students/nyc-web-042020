@@ -30,7 +30,7 @@ console.log("Welcome to Mod 3")
 
 
  Some data types
- -null
+ - null
   - essentially the same as `nil` in ruby
   - indicates the absense of a value
  
@@ -52,14 +52,36 @@ console.log("Welcome to Mod 3")
  
  - Array
   - again, pretty much the same as ruby
-  - can hold multiple data types, even function
+  - can hold multiple data types, even functions
   - iterators (forEach, map, reduce, filter)
   - multi-dimensional arrays
 
 
  - undefined
+  - represents something without a definition
+
+
  Functions
 
+def say_hi
+  puts "Hi there!"
+end
 
 */
 
+// function declaration, named function
+function sayHi(name) {
+  return `Hi there, my name is ${name}`
+}
+
+// function expression
+let sayGoodbye = function(name){
+  console.log(`Goodbye ${name}!`)
+}
+
+
+
+
+// (function(){
+//   console.log("Hi there")
+// })() // IIFE - Immediately Invoked Function Expression
