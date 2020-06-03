@@ -17,6 +17,10 @@ welcomeImage.addEventListener("click", function(e){
 
 // when the mouse moves over the welcome image i want to see a picture of a baby sloth, and i want the picture to change back when the mouse moves off the image
 
+welcomeImage.addEventListener('mouseover', function(e){
+  e.target.src = "https://i.ytimg.com/vi/qYKrqd9VacY/maxresdefault.jpg"
+})
 
-
-
+welcomeImage.addEventListener('mouseout', function(e){
+  e.target.src = "https://media.giphy.com/media/UDjF1zMreMld6/giphy.gif"
+})
