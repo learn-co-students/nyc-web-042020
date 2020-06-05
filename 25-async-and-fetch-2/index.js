@@ -1,73 +1,16 @@
 console.log("Let's try and make fetch happen today!")
 
-
-
 document.addEventListener("DOMContentLoaded", function(e){
-  console.log("DOM DOM DOM")
 
-  const movies = [
-    {
-      title: 'The Goonies',
-      imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/515DYf99zfL.jpg',
-      year: 1985,
-      genre: 'Adventure',
-      score: 100
-    },
-    { 
-      title: 'Free Willy',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/b5/Free_willy.jpg/220px-Free_willy.jpg',
-      year: 1993,
-      genre: 'Family',
-      score: 0  
-    },
-    { 
-      title: 'Top Gun',
-      imageUrl: 'https://m.media-amazon.com/images/M/MV5BZjQxYTA3ODItNzgxMy00N2Y2LWJlZGMtMTRlM2JkZjI1ZDhhXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_.jpg',
-      year: 1986,
-      genre: 'Adventure',
-      score: 0  
-    },
-    { 
-      title: 'Mean Girls',
-      imageUrl: 'https://img01.mgo-images.com/image/thumbnail?id=1MV270609a1c6c89af5538a6d63cea71ed4&ql=70&sizes=310x465',
-      year: 2004,
-      genre: 'Comedy',
-      score: 0  
-    },
-    { 
-      title: 'Parasite',
-      imageUrl: 'https://mymodernmet.com/wp/wp-content/uploads/2020/02/parasite-film-tribute-1.jpg',
-      year: 2019,
-      genre: 'Horror',
-      score: 0  
-    },
-    {
-      title: "What About Bob?",
-      year: 1991,
-      genre: 'Comedy',
-      score: 0,
-      imageUrl: "https://www.movieartarena.com/imgs/wab.jpg"
-    },
-    {
-      title: "The Matrix",
-      year: 1999,
-      genre: 'Science Fiction',
-      score: 0,
-      imageUrl: "https://imgc.allpostersimages.com/img/print/u-g-F4S5W20.jpg?w=550&h=550&p=0"
-    },
-    {
-      title: "Jaws",
-      year: 1984,
-      genre: 'Horror',
-      score: 0,
-      imageUrl: "https://resizing.flixster.com/h8e7W7cVaQhuLdSvABDkJk6r5sc=/206x305/v1.bTsxMTE2NjE5OTtqOzE4MzU0OzEyMDA7ODAwOzEyMDA"
-    },
-  ]
+  const baseUrl = "http://localhost:3000/movies"
   const movieList = document.querySelector('#movie-list')
   
   function createMovieLi(movieObj){
     const movieLi = document.createElement('li')
     movieLi.className = 'movie'
+    movieLi.dataset.beef = "cow"
+    movieLi.dataset.id = movieObj.id
+
     
     movieLi.innerHTML = `
       <h3>${movieObj.title}</h3>
@@ -76,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(e){
       <h4>Genre: ${movieObj.genre}</h4>
       <h4>Score: <span>${movieObj.score}</span> </h4>
       <button class="up-vote">Up Vote</button>
-      <button>Down Vote</button>
+      <button data-purpose="down-vote">Down Vote</button>
       <button class="delete">&times;</button>
     `
   
@@ -94,16 +37,43 @@ document.addEventListener("DOMContentLoaded", function(e){
     movieList.append(movieLi)
   }
   
+  let getMovies = () => {
+    fetch(baseUrl)
+    .then(response => response.json())
+    .then(movies => {
+      renderMovies(movies)
+    })
+  }
+  
   document.addEventListener('click', function(e){
     if(e.target.className === 'up-vote'){
-      console.log("voting up")
+
+      // pessimistic rendering beause we're going to wait to hear
+      // back from the DB before updating the DOM
+
       const parentLi = e.target.parentNode
+      const id = parentLi.dataset.id
       const scoreSpan = parentLi.querySelector('span')
+      const score = parseInt(scoreSpan.textContent) + 1
+
+      fetch(`${baseUrl}/${id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          "accept": "application/json"
+        },
+        body: JSON.stringify({ score: score })
+      })
+      .then(response => response.json())
+      .then(movie => {
+        scoreSpan.textContent = movie.score
+      })
+
+
       
-      scoreSpan.textContent = parseInt(scoreSpan.textContent) + 1
   
     } else if(e.target.className === "delete"){
-      console.log('deleting')
+
       e.target.parentNode.remove()
     } else if(e.target.id === 'show-form'){
       const button = e.target
@@ -142,6 +112,9 @@ document.addEventListener("DOMContentLoaded", function(e){
   document.addEventListener("submit", function(e){
     e.preventDefault()
 
+    // this is optimistic rendering because we're adding the
+    // movie to the DOM before hearing back from the DB
+
     const movieForm = e.target
 
     const title = movieForm.title.value
@@ -158,7 +131,34 @@ document.addEventListener("DOMContentLoaded", function(e){
     }
 
     renderMovie(movieObj)
+
+    // create a movie record in the db
+
+    fetch(baseUrl, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify(movieObj)
+    }) // end of fetch call
+    .then(response => response.json())
+    .then(console.log)
   })
   
-  renderMovies(movies)   
+  getMovies()  
 })
+
+// Load movies from DB
+// √1. get the movies
+// √2. render the movies
+
+
+// Add new movie to DB
+// √1. get movie info from form
+// √2. submit that info to the DB
+// √3. render that movie to the DOM
+
+
+// Update score on movie record in DB
+// 1. make a fetch request (PATCH) to update the record on up-vote-click

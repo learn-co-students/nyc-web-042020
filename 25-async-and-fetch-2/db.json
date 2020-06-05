@@ -14,7 +14,7 @@
       "imageUrl": "https://imgc.allpostersimages.com/img/print/u-g-F4S5W20.jpg?w=550&h=550&p=0",
       "year": 1999,
       "genre": "Science Fiction",
-      "score": 18
+      "score": 32
     },
     {
       "id": 3,
@@ -87,6 +87,14 @@
       "imageUrl": "https://movieposters2.com/images/1566923-b.jpg",
       "score": 0,
       "id": 16
+    },
+    {
+      "title": "The Vast of Night",
+      "year": "2019",
+      "genre": "SciFi",
+      "imageUrl": "https://www.pophorror.com/wp-content/uploads/2020/03/vast-489x600.jpg",
+      "score": 0,
+      "id": 17
     }
   ]
 }
