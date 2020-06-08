@@ -1,0 +1,1135 @@
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (219.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "movies_api_development"[0m
+  [1m[35m (224.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "movies_api_test"[0m
+  [1m[35m (544.4ms)[0m  [1m[35mCREATE DATABASE "movies_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (459.9ms)[0m  [1m[35mCREATE DATABASE "movies_api_test" ENCODING = 'unicode'[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6855664872665726250)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMovies (20200608152700)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "movies" ("id" bigserial primary key, "title" character varying, "year" integer, "score" integer, "imageUrl" character varying, "genre" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200608152700"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-08 15:30:13.405255"], ["updated_at", "2020-06-08 15:30:13.405255"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6855664872665726250)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mMovie Load (0.7ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (1.4ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Jaws"], ["year", 1975], ["score", 19], ["imageUrl", "https://resizing.flixster.com/h8e7W7cVaQhuLdSvABDkJk6r5sc=/206x305/v1.bTsxMTE2NjE5OTtqOzE4MzU0OzEyMDA7ODAwOzEyMDA"], ["genre", "Horror"], ["created_at", "2020-06-08 15:32:49.239770"], ["updated_at", "2020-06-08 15:32:49.239770"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "The Matrix"], ["year", 1999], ["score", 18], ["imageUrl", "https://imgc.allpostersimages.com/img/print/u-g-F4S5W20.jpg?w=550&h=550&p=0"], ["genre", "Science Fiction"], ["created_at", "2020-06-08 15:32:49.246008"], ["updated_at", "2020-06-08 15:32:49.246008"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "The Goonies"], ["year", 1985], ["score", 0], ["imageUrl", "https://images-na.ssl-images-amazon.com/images/I/515DYf99zfL.jpg"], ["genre", "Adventure"], ["created_at", "2020-06-08 15:32:49.248893"], ["updated_at", "2020-06-08 15:32:49.248893"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Free Willy"], ["year", 1993], ["score", 0], ["imageUrl", "https://upload.wikimedia.org/wikipedia/en/thumb/b/b5/Free_willy.jpg/220px-Free_willy.jpg"], ["genre", "Family"], ["created_at", "2020-06-08 15:32:49.251821"], ["updated_at", "2020-06-08 15:32:49.251821"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (0.4ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Top Gun"], ["year", 1986], ["score", 0], ["imageUrl", "https://m.media-amazon.com/images/M/MV5BZjQxYTA3ODItNzgxMy00N2Y2LWJlZGMtMTRlM2JkZjI1ZDhhXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_.jpg"], ["genre", "Action"], ["created_at", "2020-06-08 15:32:49.254814"], ["updated_at", "2020-06-08 15:32:49.254814"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (0.5ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Mean Girls"], ["year", 2004], ["score", 0], ["imageUrl", "https://img01.mgo-images.com/image/thumbnail?id=1MV270609a1c6c89af5538a6d63cea71ed4&ql=70&sizes=310x465"], ["genre", "Comedy"], ["created_at", "2020-06-08 15:32:49.258088"], ["updated_at", "2020-06-08 15:32:49.258088"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (0.5ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Tron"], ["year", 2980], ["score", 0], ["imageUrl", "https://images-na.ssl-images-amazon.com/images/I/41npElxA48L._AC_.jpg"], ["genre", "Science Fiction"], ["created_at", "2020-06-08 15:32:49.262158"], ["updated_at", "2020-06-08 15:32:49.262158"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (0.4ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "What About Bob?"], ["year", 1991], ["score", 0], ["imageUrl", "https://www.movieartarena.com/imgs/wab.jpg"], ["genre", "Comedy"], ["created_at", "2020-06-08 15:32:49.266787"], ["updated_at", "2020-06-08 15:32:49.266787"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Working Girl"], ["year", 1987], ["score", 99], ["imageUrl", "https://images-na.ssl-images-amazon.com/images/I/51X9TJrRBCL._AC_.jpg"], ["genre", "Drama"], ["created_at", "2020-06-08 15:32:49.270200"], ["updated_at", "2020-06-08 15:32:49.270200"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (0.4ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Alien"], ["year", 1979], ["score", 0], ["imageUrl", "https://i.etsystatic.com/14461980/r/il/28c6d5/1417485862/il_570xN.1417485862_le2x.jpg"], ["genre", "Horror"], ["created_at", "2020-06-08 15:32:49.273543"], ["updated_at", "2020-06-08 15:32:49.273543"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Create (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Predator"], ["year", 1986], ["score", 0], ["imageUrl", "https://movieposters2.com/images/1566923-b.jpg"], ["genre", "Horror"], ["created_at", "2020-06-08 15:32:49.276791"], ["updated_at", "2020-06-08 15:32:49.276791"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMovie Load (1.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" ORDER BY "movies"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/movies" for ::1 at 2020-06-08 11:34:01 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/movies"):
+  
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/movies" for ::1 at 2020-06-08 11:37:34 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/movies"):
+  
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:38:18 -0400
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::MoviesController):
+  
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:38:20 -0400
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::MoviesController):
+  
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:39:16 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (0.8ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:5:in `index'
+Completed 200 OK in 38ms (Views: 29.0ms | ActiveRecord: 6.3ms | Allocations: 8608)
+
+
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:39:43 -0400
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for Api::V1::MoviesController):
+  
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:39:43 -0400
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for Api::V1::MoviesController):
+  
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:39:43 -0400
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for Api::V1::MoviesController):
+  
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:39:43 -0400
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for Api::V1::MoviesController):
+  
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:39:44 -0400
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for Api::V1::MoviesController):
+  
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:39:44 -0400
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for Api::V1::MoviesController):
+  
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:40:39 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>nil, "id"=>"2", "movie"=>{"score"=>nil}}
+Completed 204 No Content in 158926ms (ActiveRecord: 2.6ms | Allocations: 55148)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:43:21 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:5:in `index'
+Completed 200 OK in 17ms (Views: 10.5ms | ActiveRecord: 4.3ms | Allocations: 8033)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:43:25 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>20, "id"=>"1", "movie"=>{"score"=>20}}
+  [1m[36mMovie Load (1.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (2.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 20], ["updated_at", "2020-06-08 15:43:25.369708"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 204 No Content in 13ms (ActiveRecord: 4.4ms | Allocations: 3575)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:44:19 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (10.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:5:in `index'
+Completed 200 OK in 14ms (Views: 3.3ms | ActiveRecord: 10.3ms | Allocations: 2479)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:44:38 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>21, "id"=>"1", "movie"=>{"score"=>21}}
+  [1m[36mMovie Load (0.9ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.6ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 21], ["updated_at", "2020-06-08 15:44:38.298191"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 204 No Content in 8ms (ActiveRecord: 2.3ms | Allocations: 2964)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:46:51 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:5:in `index'
+Completed 200 OK in 13ms (Views: 7.6ms | ActiveRecord: 3.9ms | Allocations: 8045)
+
+
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:46:53 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>19, "id"=>"2", "movie"=>{"score"=>19}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.5ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 19], ["updated_at", "2020-06-08 15:46:53.810079"], ["id", 2]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 3231)
+
+
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:46:54 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>20, "id"=>"2", "movie"=>{"score"=>20}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.4ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 20], ["updated_at", "2020-06-08 15:46:54.505926"], ["id", 2]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 3113)
+
+
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:46:54 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>21, "id"=>"2", "movie"=>{"score"=>21}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.5ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 21], ["updated_at", "2020-06-08 15:46:54.728002"], ["id", 2]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 3115)
+
+
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:46:54 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>22, "id"=>"2", "movie"=>{"score"=>22}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.2ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 22], ["updated_at", "2020-06-08 15:46:54.954240"], ["id", 2]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 3113)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:46:56 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.5ms | Allocations: 2478)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:53 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>22, "id"=>"1", "movie"=>{"score"=>22}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.5ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 22], ["updated_at", "2020-06-08 15:47:53.736924"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:53 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>23, "id"=>"1", "movie"=>{"score"=>23}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 23], ["updated_at", "2020-06-08 15:47:53.894033"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:54 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>24, "id"=>"1", "movie"=>{"score"=>24}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 24], ["updated_at", "2020-06-08 15:47:54.028305"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.2ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:54 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>25, "id"=>"1", "movie"=>{"score"=>25}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 25], ["updated_at", "2020-06-08 15:47:54.174165"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:54 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>26, "id"=>"1", "movie"=>{"score"=>26}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.7ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 26], ["updated_at", "2020-06-08 15:47:54.310840"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:54 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>27, "id"=>"1", "movie"=>{"score"=>27}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.4ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 27], ["updated_at", "2020-06-08 15:47:54.479418"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 3111)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:54 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>28, "id"=>"1", "movie"=>{"score"=>28}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.5ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 28], ["updated_at", "2020-06-08 15:47:54.623690"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:54 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>29, "id"=>"1", "movie"=>{"score"=>29}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 29], ["updated_at", "2020-06-08 15:47:54.757762"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:54 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>30, "id"=>"1", "movie"=>{"score"=>30}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.2ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 30], ["updated_at", "2020-06-08 15:47:54.905627"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:55 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>31, "id"=>"1", "movie"=>{"score"=>31}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.7ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 31], ["updated_at", "2020-06-08 15:47:55.053875"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 1.7ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:55 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>32, "id"=>"1", "movie"=>{"score"=>32}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.4ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 32], ["updated_at", "2020-06-08 15:47:55.199582"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.6ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:55 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>33, "id"=>"1", "movie"=>{"score"=>33}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 33], ["updated_at", "2020-06-08 15:47:55.342782"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:55 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>34, "id"=>"1", "movie"=>{"score"=>34}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 34], ["updated_at", "2020-06-08 15:47:55.490989"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:55 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>35, "id"=>"1", "movie"=>{"score"=>35}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.5ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 35], ["updated_at", "2020-06-08 15:47:55.638897"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.3ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/1" for ::1 at 2020-06-08 11:47:55 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>36, "id"=>"1", "movie"=>{"score"=>36}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.4ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 36], ["updated_at", "2020-06-08 15:47:55.797447"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 3107)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:48:00 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.5ms | Allocations: 2479)
+
+
+Started PATCH "/api/v1/movies/2" for ::1 at 2020-06-08 11:48:03 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>23, "id"=>"2", "movie"=>{"score"=>23}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.9ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 23], ["updated_at", "2020-06-08 15:48:03.154215"], ["id", 2]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 1.9ms | Allocations: 3116)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:48:03 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.5ms | Allocations: 2478)
+
+
+  [1m[36mMovie Load (1.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:50:09 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (0.7ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 18ms (Views: 1.2ms | ActiveRecord: 6.8ms | Allocations: 8424)
+
+
+Started PATCH "/api/v1/movies/4" for ::1 at 2020-06-08 11:50:11 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>1, "id"=>"4", "movie"=>{"score"=>1}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.6ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 1], ["updated_at", "2020-06-08 15:50:11.664432"], ["id", 4]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 3742)
+
+
+Started PATCH "/api/v1/movies/4" for ::1 at 2020-06-08 11:50:11 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>2, "id"=>"4", "movie"=>{"score"=>2}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 2], ["updated_at", "2020-06-08 15:50:11.806369"], ["id", 4]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/4" for ::1 at 2020-06-08 11:50:11 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>3, "id"=>"4", "movie"=>{"score"=>3}}
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 3], ["updated_at", "2020-06-08 15:50:11.955628"], ["id", 4]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/4" for ::1 at 2020-06-08 11:50:12 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>4, "id"=>"4", "movie"=>{"score"=>4}}
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 4], ["updated_at", "2020-06-08 15:50:12.088417"], ["id", 4]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/4" for ::1 at 2020-06-08 11:50:12 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>5, "id"=>"4", "movie"=>{"score"=>5}}
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 5], ["updated_at", "2020-06-08 15:50:12.222974"], ["id", 4]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 3107)
+
+
+Started PATCH "/api/v1/movies/4" for ::1 at 2020-06-08 11:50:12 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>6, "id"=>"4", "movie"=>{"score"=>6}}
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.3ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 6], ["updated_at", "2020-06-08 15:50:12.369197"], ["id", 4]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 3127)
+
+
+Started PATCH "/api/v1/movies/4" for ::1 at 2020-06-08 11:50:12 -0400
+Processing by Api::V1::MoviesController#update as JSON
+  Parameters: {"score"=>7, "id"=>"4", "movie"=>{"score"=>7}}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[36mMovie Update (0.5ms)[0m  [1m[33mUPDATE "movies" SET "score" = $1, "updated_at" = $2 WHERE "movies"."id" = $3[0m  [["score", 7], ["updated_at", "2020-06-08 15:50:12.515085"], ["id", 4]]
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:11:in `update'
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 3107)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:50:13 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (1.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 1.0ms | Allocations: 2334)
+
+
+Started POST "/api/v1/movies" for ::1 at 2020-06-08 11:50:45 -0400
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Api::V1::MoviesController):
+  
+actionpack (6.0.3.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/api/v1/movies" for ::1 at 2020-06-08 11:52:01 -0400
+Processing by Api::V1::MoviesController#create as JSON
+  Parameters: {"title"=>"Stardust", "year"=>"2007", "genre"=>"Fantasy", "imageUrl"=>"https://i5.walmartimages.com/asr/4213d8f0-dd82-4513-addb-aa08b51121c7_1.bbe6f5d167cd8ceba67ae25623143a59.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff", "score"=>0, "movie"=>{"title"=>"Stardust", "year"=>"2007", "score"=>0, "imageUrl"=>"https://i5.walmartimages.com/asr/4213d8f0-dd82-4513-addb-aa08b51121c7_1.bbe6f5d167cd8ceba67ae25623143a59.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff", "genre"=>"Fantasy"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `create'
+  [1m[36mMovie Create (0.5ms)[0m  [1m[32mINSERT INTO "movies" ("title", "year", "score", "imageUrl", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Stardust"], ["year", 2007], ["score", 0], ["imageUrl", "https://i5.walmartimages.com/asr/4213d8f0-dd82-4513-addb-aa08b51121c7_1.bbe6f5d167cd8ceba67ae25623143a59.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff"], ["genre", "Fantasy"], ["created_at", "2020-06-08 15:52:01.572068"], ["updated_at", "2020-06-08 15:52:01.572068"]]
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:9:in `create'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 5.8ms | Allocations: 7475)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:52:39 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (1.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 1.4ms | Allocations: 2486)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:54:25 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.5ms | Allocations: 2471)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:56:57 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 20ms (Views: 1.6ms | ActiveRecord: 6.9ms | Allocations: 8012)
+
+
+Started DELETE "/api/v1/movies/11" for ::1 at 2020-06-08 11:57:07 -0400
+Processing by Api::V1::MoviesController#destroy as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:23:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:25:in `destroy'
+  [1m[36mMovie Destroy (0.3ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = $1[0m  [["id", 11]]
+  ↳ app/controllers/api/v1/movies_controller.rb:25:in `destroy'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:25:in `destroy'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 2604)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:57:27 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.4ms | Allocations: 2322)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:58:27 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (1.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 1.3ms | Allocations: 2322)
+
+
+Started DELETE "/api/v1/movies/12" for ::1 at 2020-06-08 11:58:42 -0400
+Processing by Api::V1::MoviesController#destroy as */*
+  Parameters: {"id"=>"12"}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:23:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:25:in `destroy'
+  [1m[36mMovie Destroy (0.2ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = $1[0m  [["id", 12]]
+  ↳ app/controllers/api/v1/movies_controller.rb:25:in `destroy'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:25:in `destroy'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.9ms | Allocations: 2480)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 11:58:45 -0400
+Processing by Api::V1::MoviesController#index as */*
+  [1m[36mMovie Load (1.6ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 19ms (Views: 1.4ms | ActiveRecord: 1.6ms | Allocations: 2169)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 12:00:35 -0400
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 20ms (Views: 1.5ms | ActiveRecord: 6.0ms | Allocations: 7582)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 12:00:43 -0400
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 12ms (Views: 0.9ms | ActiveRecord: 4.4ms | Allocations: 7688)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-06-08 12:00:43 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 12:00:56 -0400
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 14ms (Views: 1.3ms | ActiveRecord: 5.0ms | Allocations: 7688)
+
+
+Started GET "/api/v1/movies" for ::1 at 2020-06-08 12:01:07 -0400
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:3:in `sort_by'
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 4.7ms | Allocations: 7376)
+
+

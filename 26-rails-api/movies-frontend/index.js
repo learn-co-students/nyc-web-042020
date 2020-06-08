@@ -2,7 +2,7 @@ console.log("Let's try and make fetch happen today!")
 
 document.addEventListener("DOMContentLoaded", function(e){
 
-  const baseUrl = "http://localhost:3000/movies"
+  const baseUrl = "http://localhost:3000/api/v1/movies"
   const movieList = document.querySelector('#movie-list')
   
   function createMovieLi(movieObj){
@@ -73,8 +73,18 @@ document.addEventListener("DOMContentLoaded", function(e){
       
   
     } else if(e.target.className === "delete"){
+      const parentLi = e.target.parentNode
+      const id = parentLi.dataset.id 
 
-      e.target.parentNode.remove()
+      fetch(`${baseUrl}/${id}`, {
+        method: "DELETE"
+      })
+      .then(response => response.json())
+      .then(data => {
+        parentLi.remove()
+      })
+
+
     } else if(e.target.id === 'show-form'){
       const button = e.target
       const movieForm = document.createElement('form')
