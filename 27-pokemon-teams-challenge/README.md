@@ -6,7 +6,7 @@ trainers at Flatiron School. Through their journey,
 team**. If they want to add another Pokemon, they must
 release one of their Pokemon first.
 
-![Showing how the application runs from loading, adding Pokemon to a team and also releasing one](/pokemon-teams-frontend/assets/pokemon_teams.gif)
+![Showing how the application runs from loading, adding Pokemon to a team and also releasing one](./pokemon-teams-frontend/assets/pokemon_teams.gif)
 
 ## Requirements
 - When a user loads the page, they should see all
