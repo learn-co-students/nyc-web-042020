@@ -41,44 +41,54 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
   
-  tableBody.addEventListener('click', event => {
-    if(event.target.className === 'edit'){
-      const row = event.target.parentNode.parentNode
-      const cells = row.children
-
-      const name = cells[0].textContent
-      const breed = cells[1].textContent
-      const sex = cells[2].textContent
-
-      const form = document.querySelector('#dog-form')
-
-      form.name.value = name
-      form.breed.value = breed
-      form.sex.value = sex
-      form.dataset.id = row.dataset.id
-    }
-  })
-
-  document.addEventListener('submit', event => {
-    event.preventDefault()
-    const form = event.target
-
-    const id = form.dataset.id
-    const name = form.name.value
-    const breed = form.breed.value
-    const sex = form.sex.value
-
-    fetch(`${url}/${id}`, {
-      method: "PATCH",
-      headers: {
-        "accept": "application/json",
-        "content-type": "application/json"
-      },
-      body: JSON.stringify({ name, breed, sex })
+  const clickHandler = () => {
+    tableBody.addEventListener('click', event => {
+      if(event.target.className === 'edit'){
+        const row = event.target.closest("tr")
+        console.log(row)
+        const cells = row.children
+  
+        const name = cells[0].textContent
+        const breed = cells[1].textContent
+        const sex = cells[2].textContent
+  
+        const form = document.querySelector('#dog-form')
+  
+        form.name.value = name
+        form.breed.value = breed
+        form.sex.value = sex
+        form.dataset.id = row.dataset.id
+      }
     })
-    .then(getDogs)
-  })
+  }
+
+  const submitHandler = () => {
+    document.addEventListener('submit', event => {
+      event.preventDefault()
+      const form = event.target
+  
+      const id = form.dataset.id
+      const name = form.name.value
+      const breed = form.breed.value
+      const sex = form.sex.value
+  
+      const patchUrl = `${url}/${id}`
+      console.log(patchUrl)
+      
+      fetch(patchUrl, {
+        method: "PATCH",
+        headers: {
+          "accept": "application/json",
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({ name, breed, sex })
+      })
+      .then(getDogs)
+    })  
+  }
 
   
   getDogs()
+  clickHandler()
+  submitHandler()
 })

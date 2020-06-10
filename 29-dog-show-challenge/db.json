@@ -2,7 +2,7 @@
   "dogs": [
     {
       "id": 1,
-      "name": "Baby Doll",
+      "name": "Baby Doll Face Jr.",
       "breed": "Actually a cat",
       "sex": "male"
     },
@@ -50,7 +50,7 @@
     },
     {
       "id": 9,
-      "name": "Shelby",
+      "name": "ShelbypAm",
       "breed": "Kuvasz",
       "sex": "male"
     },
@@ -87,8 +87,8 @@
     {
       "id": 15,
       "name": "Pepper",
-      "breed": "Westhighland Terrier",
-      "sex": "female"
+      "breed": "Westhighland Kangaroo",
+      "sex": "none of your biz"
     },
     {
       "id": 16,
