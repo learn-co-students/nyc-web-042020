@@ -25,7 +25,7 @@ class Api::V1::MoviesController < ApplicationController
 
     movie.destroy
 
-    render json: {}
+    render json: movie
   end
 
   private
