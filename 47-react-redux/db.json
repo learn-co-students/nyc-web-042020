@@ -1,0 +1,25 @@
+{
+    "foods": [
+        {
+            "id": 1,
+            "name": "Doritos",
+            "flavorProfile": "Ranchy"
+        },
+        {
+            "id": 2,
+            "name": "Chicken",
+            "flavorProfile": "Protein"
+        },
+        {
+            "id": 3,
+            "name": "Fritos",
+            "flavorProfile": "Corny"
+        },
+        {
+            "id": 4,
+            "name": "Candy Corn",
+            "flavorProfile": "Not like Corn"
+        }
+    ]
+  }
+  
